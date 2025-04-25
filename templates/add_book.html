@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <title>Add Book</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <script>
+        function confirmAdd() {
+            alert("Book added successfully!");
+        }
+    </script>
+</head>
+<body>
+    
+    
+    <h1>Add a New Book</h1>
+    <form method="POST" onsubmit="confirmAdd()">
+        <label>Title:</label>
+        <input type="text" name="title" required>
+
+        <label>Author:</label>
+        <input type="text" name="author" required>
+
+        <button type="submit">Add Book</button>
+    </form>
+    <a href="/">Back to Home</a>
+</body>
+</html>
