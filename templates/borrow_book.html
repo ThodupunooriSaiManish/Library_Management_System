@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Borrow Book</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+    
+    <h1>Borrow a Book</h1>
+
+    <!-- Search Bar -->
+    <form method="GET" action="/borrow" class="search-box">
+        <input type="text" name="search" placeholder="Search by title or author" value="{{ request.args.get('search', '') }}">
+        <button type="submit"><i class="fas fa-search"></i> Search</button>
+    </form>
+
+    <form method="POST" class="form-box">
+        <label for="book_id">Select Book:</label>
+        <select name="book_id" required>
+            <option value="">-- Choose a Book --</option>
+            {% for book in books %}
+                <option value="{{ book.id }}">{{ book.title }} by {{ book.author }}</option>
+            {% endfor %}
+        </select>
+
+        <label for="borrower_name">Borrower Name:</label>
+        <input type="text" name="borrower_name" required placeholder="Enter your name">
+
+        <label for="due_date">Due Date:</label>
+        <input type="date" name="due_date" required>
+
+        <label>Date Borrowed:</label>
+        <input type="text" value="{{ current_date }}" readonly>
+
+        <button type="submit"><i class="fas fa-paper-plane"></i> Borrow Book</button>
+    </form>
+</body>
+</html>
