@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>View Books</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: #f4f6f9;
+            padding: 0;
+            margin: 0;
+        }
+
+        .navbar {
+            background: #343a40;
+            padding: 10px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        .navbar a:hover {
+            color: #ffc107;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 30px;
+            color: #343a40;
+        }
+
+        form {
+            text-align: center;
+            margin: 20px;
+        }
+
+        input[type="text"] {
+            padding: 10px;
+            width: 300px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            padding: 10px 15px;
+            border: none;
+            background-color: #007bff;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        table {
+            width: 90%;
+            margin: 30px auto;
+            border-collapse: collapse;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+            background-color: white;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: center;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #007bff;
+            color: white;
+        }
+
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        .back-link {
+            display: block;
+            text-align: center;
+            margin: 20px;
+        }
+
+        .back-link a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        .back-link a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="navbar">
+        <a href="/"><i class="fas fa-home"></i> Home</a>
+        <a href="/add"><i class="fas fa-plus-circle"></i> Add Book</a>
+        <a href="/borrow"><i class="fas fa-book-reader"></i> Borrow</a>
+        <a href="/return"><i class="fas fa-undo-alt"></i> Return</a>
+        <a href="/books"><i class="fas fa-list"></i> View Books</a>
+    </div>
+
+    <h1><i class="fas fa-book"></i> All Books</h1>
+
+    <form method="GET" action="/books">
+        <input type="text" name="search" placeholder="Search by title or author...">
+        <button type="submit"><i class="fas fa-search"></i> Search</button>
+    </form>
+
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Available</th>
+        </tr>
+        {% if books %}
+            {% for book in books %}
+            <tr>
+                <td>{{ book.id }}</td>
+                <td>{{ book.title }}</td>
+                <td>{{ book.author }}</td>
+                <td>{{ 'Yes' if book.available else 'No' }}</td>
+            </tr>
+            {% endfor %}
+        {% else %}
+            <tr>
+                <td colspan="4">No books found.</td>
+            </tr>
+        {% endif %}
+    </table>
+
+    <div class="back-link">
+        <a href="/"><i class="fas fa-arrow-left"></i> Back to Home</a>
+    </div>
+
+</body>
+</html>
