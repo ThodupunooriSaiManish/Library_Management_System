@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <title>Library Management System</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    
+    
+    <h1>Welcome to the Book Store</h1>
+    <h3>Total Number of Books in Library: {{ total_books }}</h3>
+    <form>
+        <a href="/add">Add Book</a>
+        <a href="/borrow">Borrow Book</a>
+        <a href="/return">Return Book</a>
+    </form>
+    <div style="text-align: center; margin-top: 30px;">
+        <h2>📚 Summary</h2>
+        <p><strong>Total Books:</strong> {{ total_books }}</p>
+        <p><strong>Available Books:</strong> {{ available_books }}</p>
+        <p><strong>Borrowed Books:</strong> {{ borrowed_books }}</p>
+    </div>
+    
+</body>
+</html>
